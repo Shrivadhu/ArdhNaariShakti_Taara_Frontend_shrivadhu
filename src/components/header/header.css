@@ -1,10 +1,13 @@
 header {
-  background: #ffa9cb;
+  background: var(--header-bg);
   padding: 20px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   position: relative;
   z-index: 44;
+  transition: background 0.3s ease;
 }
+
+
 /* nav */
 nav ul {
   display: flex;
@@ -12,7 +15,7 @@ nav ul {
 nav a {
   text-transform: capitalize;
   margin-right: 30px;
-  color: #000;
+  color: var(--text-color);
   position: relative;
   padding: 5px;
   transition: all 0.3s ease;
@@ -24,7 +27,7 @@ nav a::after {
   bottom: -2px;
   width: 0%;
   height: 2px;
-  background-color: #000;
+  background-color: var(--text-color);
   transition: width 0.3s ease;
 }
 nav a:hover::after {
@@ -33,9 +36,9 @@ nav a:hover::after {
 
 /* Active link styling */
 .nav-link.active {
-  color: #000;
+  color: var(--text-color);
   font-weight: bold;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--text-color);
 }
 
 /* User */
@@ -53,8 +56,8 @@ nav a:hover::after {
 .profile button {
   font-size: 17px;
   font-weight: 500;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   padding: 8px 16px;
   border-radius: 8px;
   border: none;
@@ -62,7 +65,7 @@ nav a:hover::after {
   transition: background-color 0.3s ease;
 }
 .profile button:hover {
-  background-color: #eec7d6;
+  background-color: var(--hover-color);
 }
 
 .profile img {
@@ -71,14 +74,15 @@ nav a:hover::after {
   border-radius: 50%;
   object-fit: cover;
 }
+
 .openProfile {
-  color: #000;
+  color: var(--text-color);
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   position: absolute;
   top: 80px;
   right: 10px;
   width: 250px;
-  background: #fff;
+  background: var(--bg-color);
 }
 .openProfile .box {
   display: flex;
@@ -99,6 +103,7 @@ nav a:hover::after {
 .openProfile button:hover {
   background: rgba(147, 75, 255, 0.075);
 }
+
 header.active {
   position: sticky;
   top: 0;
@@ -106,8 +111,26 @@ header.active {
   width: 100%;
   box-shadow: 0 0 4px 0 rgb(115 115 115 / 20%);
   z-index: 9999;
-  background: #ffa9cb;
+  background: var(--header-bg);
 }
+
+/* Toggle Button */
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+  font-size: 1.2rem;
+  padding: 6px 10px;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.theme-toggle-btn:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
 @media screen and (max-width: 768px) {
   header .search {
     display: none;
@@ -116,3 +139,19 @@ header.active {
     display: none;
   }
 }
+/* Light theme (default) */
+:root {
+  --header-bg: #ffffff;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --hover-color: #f0f0f0;
+}
+
+/* Dark theme overrides */
+body.dark-mode {
+  --header-bg: #1f1f1f;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --hover-color: #333333;
+}
+
